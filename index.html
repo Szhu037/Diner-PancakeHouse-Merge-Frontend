@@ -9,7 +9,7 @@
 </head>
 <body>
     <ul class="topnav">
-        <li><a class="active" href="allitems.html">All Items</a></li>
+        <li><a class="active" href="allitems.html">All Menus</a></li>
         <li><a href="breakfast.html">Breakfast</a></li>
         <li><a href="lunch.html">Lunch</a></li>
         <li><a href="dinner.html">Dinner</a></li>
@@ -41,18 +41,18 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>
+                    <button class="signup-button" onclick="registrationButton()" Sign Up</button>
+                    <button class="forgot-password-button">Forgot password?</button>
+                </td>
             </tr>
         </table>
-        
-       
-
-       
-        
     </div>
-       
+
 <script>
-  
+    function registrationButton() {
+        window.location.href = "registration.html";
+    }
 </script>
 </body>
 </html>
