@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diner</title>
+    <link href="general.css" rel="stylesheet"/>
+    <link href="navbar.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <ul class="topnav">
+        <li><a href="allitems.html">All Items</a></li>
+        <li><a href="breakfast.html">Breakfast</a></li>
+        <li><a class="active" href="lunch.html">Lunch</a></li>
+        <li><a href="dinner.html">Dinner</a></li>
+        <li><a href="vegetarian.html">Vegetarian</a></li>
+    </ul>
+    <div id="menu" class="container"></div>
+    <script>
+      let host = "http://localhost:8080";
+      let menuDiv = document.getElementById("menu");
+
+      displayTheMenu();
+
+      async function getTheMenu() {
+        let response = await fetch(host + "/merger/lunch");
+        let menu = await response.json();
+        return menu;
+      }
+
+      async function displayTheMenu() {
+        let menu = await getTheMenu();
+        for (let menuItem of menu) {
+          let div = document.createElement("div");
+          div.class = "menu-item";
+          div.innerHTML = `
+               <div class="menu-item">
+                <div class="item-name">${menuItem.name}</div>
+                <div class="item-description">${menuItem.description}</div>
+                <div class="item-price">${menuItem.price}</div>
+               </div>
+               `;
+          menuDiv.appendChild(div);
+        }
+      }
+    </script>
+  </body>
+</html>
